@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Lupcom\{bundle_name}\Classes\Helper;
 
 /**
- * @ContentElement({controller_name}::TYPE, category="lupcom", template={template_name}::TYPE)
+ * @ContentElement({controller_name}::TYPE, category="lupcom", template={controller_name}::TYPE)
  */
 class {controller_name} extends AbstractContentElementController
 {
