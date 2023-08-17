@@ -1,0 +1,26 @@
+<?php
+$GLOBALS['TL_JAVASCRIPT'][] = 'files/tpl/js/{module_name}.js';
+global $objPage;
+?>
+<!-- indexer::stop -->
+<div class="ultrawide-wrapper">
+  <div class="{module_name} preload">
+    <div class="brand">
+      <a href="<?php if ($objPage->rootLanguage == "de") : ?>/<?php else : ?>/en.html<?php endif; ?>">
+        <img src="/files/tpl/icons/vector/logo-standard.svg" alt="">
+      </a>
+    </div>
+
+    <div class="spacer"></div>
+
+    <nav class="<?= $this->class ?> block navigation" <?= $this->cssID ?> itemscope itemtype="http://schema.org/SiteNavigationElement">
+      <?= $this->items ?> <!-- nav_default.html5 -->
+      <span id="<?= $this->skipId ?>" class="invisible"></span>
+    </nav>
+    <div class="mobile-toggle">
+        <img src="https://via.placeholder.com/50x50" alt="">
+    </div>
+  </div>
+</div>
+
+<!-- indexer::continue -->
