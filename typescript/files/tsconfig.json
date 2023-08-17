@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ES2017",
+        "outDir": "files/tpl/js",
+        "rootDir": "files/tpl/ts"
+    }
+}
