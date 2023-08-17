@@ -1,0 +1,53 @@
+<?php
+
+use Contao\ArticleModel;
+use Contao\PageModel;
+
+$pageId = $GLOBALS['objPage']->id;
+$pageAlias = $GLOBALS['objPage']->alias;
+$pageTitle = $GLOBALS['objPage']->title;
+$articleIds = unserialize($this->articleOptions) ?: [];
+?>
+<div class="{template_name}">
+    <nav class="navbar active preload">
+        <a href="/" class="brand">
+            <h1>Tischlerei Bernitt</h1>
+            <div class="logo">
+                {{picture::files/tpl/icons/bernitt-logo.svg}}
+            </div>
+        </a>
+        <ul class="nav-items">
+            <?php
+            foreach ($articleIds as $id) {
+                if (str_starts_with($id, "index")) {
+                    $locPageId = explode("-", $id)[1];
+                    $articlePage = PageModel::findById($locPageId);
+                    $indexPage = true;
+                } else {
+                    $article = ArticleModel::findById($id);
+                    $articlePage = PageModel::findById($article->pid);
+                    $indexPage = false;
+                }
+
+                $ignorePath = $articlePage->alias == "index";
+                $indicatorsActive = $articlePage->articleIndicators && $article->title == $articlePage->title;
+                $indicators = 0;
+
+                foreach (ArticleModel::findByPid($articlePage->id) ?? [] as $tempArticle) {
+                    if ($tempArticle->published) {
+                        $indicators++;
+                    }
+                }
+            ?>
+                <li>
+                    <a href="<?= $ignorePath ? "" : "/$articlePage->alias" ?><?= !$indexPage ? "#article-" . $article->id : "" ?>" class="article-redirect <?= $indicatorsActive ? "notification" : "" ?> <?= $articlePage->id == $pageId ? "active" : "" ?>" data-notifications="<?= $indicators ?>"><?= !$indexPage ? $article->title : $articlePage->title ?></a>
+                </li>
+            <?php
+            }
+            ?>
+        </ul>
+    </nav>
+    <button class="burger-toggle">
+        {{picture::files/tpl/icons/menu-btn.svg}}
+    </button>
+</div>
