@@ -3,7 +3,7 @@ $GLOBALS['TL_DCA'][$strName]['fields']['articleOptions'] = array(
     'inputType' => 'checkbox',
     'options_callback' => "generateArticleOptions",
     'eval' => ['multiple' => true],
-    'sql' => ['type' => 'blob'],
+    'sql' => "blob NULL",
 );
 
 $GLOBALS['TL_DCA'][$strName]['palettes'][{module_name}::TYPE]     = '

@@ -3,17 +3,18 @@
 use Contao\ArticleModel;
 use Contao\PageModel;
 
+$GLOBALS['TL_JAVASCRIPT'][] = 'files/tpl/js/{template_name}.js';
+
 $pageId = $GLOBALS['objPage']->id;
 $pageAlias = $GLOBALS['objPage']->alias;
 $pageTitle = $GLOBALS['objPage']->title;
 $articleIds = unserialize($this->articleOptions) ?: [];
 ?>
-<div class="{template_name}">
-    <nav class="navbar active preload">
+<div class="{template_name} preload">
+    <nav class="navigation">
         <a href="/" class="brand">
-            <h1>Tischlerei Bernitt</h1>
             <div class="logo">
-                {{picture::files/tpl/icons/bernitt-logo.svg}}
+                <img src="https://via.placeholder.com/200x60" alt="logo">
             </div>
         </a>
         <ul class="nav-items">
@@ -47,7 +48,8 @@ $articleIds = unserialize($this->articleOptions) ?: [];
             ?>
         </ul>
     </nav>
-    <button class="burger-toggle">
-        {{picture::files/tpl/icons/menu-btn.svg}}
+    <div class="spacer"></div>
+    <button class="mobile-toggle">
+        <img src="https://via.placeholder.com/50x50" alt="">
     </button>
 </div>
