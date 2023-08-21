@@ -1,0 +1,16 @@
+{
+  "name": "template-extractor-archives",
+  "version": "1.0.0",
+  "description": "This Repository is a collection of predefined templates. You can download the `archives/` and use them locally with the [Template Extractor Tool](https://gitlab.lupcom.de/jbath/template-extractor).",
+  "main": "helper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc && node postProcess.js $npm_config_dir && rm -f ./archives/$npm_config_dir.zip && cd $npm_config_dir && zip -r ../archives/$npm_config_dir.zip . && cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.lupcom.de/jbath/template-extractor-archives.git"
+  },
+  "author": "Lupcom",
+  "license": "ISC"
+}
