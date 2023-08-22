@@ -9,7 +9,7 @@ const mainScssFile = scssDir + "/main.scss";
 const files = "archive/files";
 
 const servicesFile = "src/Lupcom/{bundle_name}/Resources/config/services.yml";
-const registerString = "Lupcom\\CustomElementsBundle\\Controller\\:\n    resource: ../../Controller\n    public: true\n";
+const registerString = "Lupcom\\{bundle_name}\\Controller\\:\n    resource: ../../Controller\n    public: true\n";
 
 // Create necessary directories
 [controllerDir, templateDir, configDir, scssDir, dcaDir].forEach(path => {
@@ -24,7 +24,7 @@ if (!exists(servicesFile)) {
     createFile(servicesFile);
 }
 
-if (!stringExistsInFile(servicesFile, "Lupcom\\CustomElementsBundle\\Controller\\:")) {
+if (!stringExistsInFile(servicesFile, "Lupcom\\{bundle_name}\\Controller\\:")) {
     appendStringToFile(servicesFile, registerString);
 }
 

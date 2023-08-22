@@ -9,24 +9,25 @@ const scssDir = "files/tpl/scss";
 const mainScssFile = scssDir + "/main.scss";
 const files = "archive/files";
 const servicesFile = "src/Lupcom/{bundle_name}/Resources/config/services.yml";
-const registerString = "Lupcom\\CustomElementsBundle\\Controller\\:\n    resource: ../../Controller\n    public: true\n";
+const registerString = "Lupcom\\{bundle_name}\\Controller\\:\n    resource: ../../Controller\n    public: true\n";
 // Create necessary directories
 [controllerDir, templateDir, configDir, scssDir, dcaDir].forEach(path => {
     (0, helper_1.createDir)(path, { recursive: true });
 });
 (0, helper_1.copyFile)(files + "/Controller.php", controllerDir + "/{controller_name}.php");
 (0, helper_1.copyFile)(files + "/controller_template.html5", templateDir + "/{template_name}.html5");
+// services.yml
 if (!(0, helper_1.exists)(servicesFile)) {
     (0, helper_1.createFile)(servicesFile);
 }
-if (!(0, helper_1.stringExistsInFile)(servicesFile, "Lupcom\\CustomElementsBundle\\Controller\\:")) {
+if (!(0, helper_1.stringExistsInFile)(servicesFile, "Lupcom\\{bundle_name}\\Controller\\:")) {
     (0, helper_1.appendStringToFile)(servicesFile, registerString);
-}
-if (!(0, helper_1.exists)(scssDir + "/_{template_name}.scss")) {
-    (0, helper_1.copyFile)(files + "/template.scss", scssDir + "/_{template_name}.scss");
 }
 // SCSS
 const importStatement = '@import "{template_name}";\n';
+if (!(0, helper_1.exists)(scssDir + "/_{template_name}.scss")) {
+    (0, helper_1.copyFile)(files + "/template.scss", scssDir + "/_{template_name}.scss");
+}
 if (!(0, helper_1.exists)(mainScssFile)) {
     (0, helper_1.createFile)(mainScssFile);
 }
