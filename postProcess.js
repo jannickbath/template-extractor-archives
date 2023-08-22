@@ -5,7 +5,7 @@ function postProcessFile(filePath) {
     let content = fs.readFileSync(filePath, 'utf-8');
 
     // Replace the require pattern with the desired one
-    content = content.replace(/require\("\.\.\/helper"\)/g, 'require("./helper.js")');
+    content = content.replace(/require\("\.\.\/helper"\)|require\("helper"\)/g, 'require("./helper.js")');  
 
     fs.writeFileSync(filePath, content);
 }
