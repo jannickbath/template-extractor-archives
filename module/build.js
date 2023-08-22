@@ -39,8 +39,8 @@ if (!(0, helper_1.stringExistsInFile)(mainScssFile, importStatement)) {
 if (!(0, helper_1.exists)(dcaDir + "/tl_module.php")) {
     (0, helper_1.copyFile)(files + "/tl_module.php", dcaDir + "/tl_module.php");
 }
-const tableDefinition = `$GLOBALS['TL_DCA'][$strName]['palettes'][{module_name}::TYPE] = '
-    {type_legend},type;
+const tableDefinition = `\n$GLOBALS['TL_DCA'][$strName]['palettes'][{module_name}::TYPE] = '
+    {type_legend},type,name;
     {headline_legend},headline;
     {description_legend},text;
     {pic_legend},singleSRC;
