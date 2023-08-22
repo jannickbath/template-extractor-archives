@@ -19,3 +19,6 @@ if (!targetDirectory) {
 
 const buildFilePath = path.join(targetDirectory, 'build.js');
 postProcessFile(buildFilePath);
+
+const envResolverFilePath = path.join(targetDirectory, "env_resolver.js");
+postProcessFile(envResolverFilePath);

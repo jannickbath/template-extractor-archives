@@ -22,7 +22,7 @@
   "include": [
     "**/build.ts",
     "**/types.d.ts",
-    "*.ts"
+    "**/env_resolver.ts"
   ],
   "exclude": [
     "node_modules"
