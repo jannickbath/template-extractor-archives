@@ -39,6 +39,7 @@ if (!(0, helper_1.stringExistsInFile)(mainScssFile, importStatement)) {
 if (!(0, helper_1.exists)(dcaDir + "/tl_content.php")) {
     (0, helper_1.copyFile)(files + "/tl_content.php", dcaDir + "/tl_content.php");
 }
+const importDefinition = "use Lupcom\\CustomElementsBundle\\Controller\\{controller_name};";
 const tableDefinition = `$GLOBALS['TL_DCA'][$strName]['palettes'][{controller_name}::TYPE] = '
     {type_legend},type;
     {headline_legend},headline;
@@ -46,4 +47,5 @@ const tableDefinition = `$GLOBALS['TL_DCA'][$strName]['palettes'][{controller_na
     {pic_legend},singleSRC;
     {expert_legend:hide},cssID;
     {invisible_legend:hide},invisible,start,stop;';\n\n`;
+(0, helper_1.insertStringAfterMatch)(dcaDir + "/tl_content.php", "\n\n" + importDefinition, "<?php");
 (0, helper_1.appendStringToFile)(dcaDir + "/tl_content.php", tableDefinition);

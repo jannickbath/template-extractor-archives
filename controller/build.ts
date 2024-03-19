@@ -1,4 +1,4 @@
-import { appendStringToFile, copyFile, createDir, createFile, exists, prependStringToFile, stringExistsInFile } from "helper";
+import { appendStringToFile, copyFile, createDir, createFile, exists, insertStringAfterMatch, prependStringToFile, stringExistsInFile } from "helper";
 
 const controllerDir = "src/Lupcom/{bundle_name}/Controller";
 const templateDir = "src/Lupcom/{bundle_name}/Resources/contao/templates";
@@ -49,6 +49,7 @@ if (!exists(dcaDir + "/tl_content.php")) {
     copyFile(files + "/tl_content.php", dcaDir + "/tl_content.php");
 }
 
+const importDefinition = "use Lupcom\\CustomElementsBundle\\Controller\\{controller_name};";
 const tableDefinition = `$GLOBALS['TL_DCA'][$strName]['palettes'][{controller_name}::TYPE] = '
     {type_legend},type;
     {headline_legend},headline;
@@ -57,5 +58,6 @@ const tableDefinition = `$GLOBALS['TL_DCA'][$strName]['palettes'][{controller_na
     {expert_legend:hide},cssID;
     {invisible_legend:hide},invisible,start,stop;';\n\n`;
 
+insertStringAfterMatch(dcaDir + "/tl_content.php", "\n\n" + importDefinition, "<?php");
 appendStringToFile(dcaDir + "/tl_content.php", tableDefinition);
 
